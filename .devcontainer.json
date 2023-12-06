@@ -1,0 +1,29 @@
+{
+    "name": "C development workspace",
+    "build": {
+        "dockerfile": "docker/Dockerfile",
+        "target": "dev",
+        "context": "${localWorkspaceFolder}"
+    },
+    "workspaceMount": "source=${localWorkspaceFolder}/src,target=/src,type=bind,consistency=default",
+    "workspaceFolder": "/src",
+    "containerEnv": {
+        "TERM": "xterm-256color"
+    },
+    "runArgs": [
+        "-it",
+        "--rm",
+        "--network=host"
+    ],
+    "remoteUser": "user",
+    "customizations": {
+        "vscode": {
+            "settings": {
+                "terminal.integrated.shell.linux": "/bin/bash"
+            },
+            "extensions": [
+                "ms-vscode.cpptools-extension-pack"
+            ]
+        }
+    }
+}
